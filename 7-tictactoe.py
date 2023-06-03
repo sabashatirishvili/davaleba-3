@@ -72,7 +72,15 @@ def play_computer():
             index = move - 1
         else:
             print(f"კომპიუტერის({current_player} სვლა)")
-            move = random.randint(1,9)
+            available_moves = [i for i, cell in enumerate(board) if cell == " "]
+            if not available_moves:
+                print_board()
+                print("ფრე.")
+                game_over = True
+                break
+            move = random.choice(available_moves)
+            index = move - 1
+
 
         if move not in range(1, 10):
             print("არასწორი სვლაა")
@@ -94,4 +102,4 @@ def play_computer():
             current_player = "O" if current_player == "X" else "X"
 
 
-play_game()
+play_computer()
