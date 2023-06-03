@@ -20,12 +20,15 @@ winning_combinations = [
 ]
 
 def check_win(player):
+    """ფუნქცია, რომელიც ამოწმებს, მოიგო თუ არა რომელიმე მოთამაშემ თამაში მომგები კომბინაციების 
+    გადამოწმებით."""
     for combination in winning_combinations:
         if all(board[i] == player for i in combination):
             return True
     return False
 
 def print_board():
+    """ფუნქცია, რომელიც ბეჭდავს დაფას"""
     print(board[0] + "|" + board[1] + "|" + board[2] + "|")
     print("-" * 5)
     print(board[3] + "|" + board[4] + "|" + board[5] + "|")
@@ -34,6 +37,7 @@ def print_board():
     print("-" * 5)
 
 def play_game():
+    """ფუნქცია, რომელიც წარმართავს თამაშს (მოთამაშე-მოთამაშე)"""
     current_player = "X"
     game_over = False
     while not game_over:
@@ -61,6 +65,7 @@ def play_game():
             current_player = "O" if current_player == "X" else "X"
 
 def play_computer():
+    """ფუნქცია, რომელიც წარმართავს თამაშს (მოთამაშე-კომპიუტერი)"""
     current_player = "X"
     game_over = False
     while not game_over:

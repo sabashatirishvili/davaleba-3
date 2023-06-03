@@ -1,4 +1,5 @@
 def count_vowels(str):
+    """ფუნქცია, რომელიც ითვლის სტრიქონში ხმოვნებს"""
     str = str.lower()
     vowels = ["ა", "ე", "ი", "ო", "უ"]
     counter = 0
