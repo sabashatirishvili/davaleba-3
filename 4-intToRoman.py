@@ -5,6 +5,7 @@ def intToRoman(num):
         900: "CM",
         500: "D",
         100:"C",
+        90: "XC",
         50: "L",
         40: "XL",
         10:"X",
@@ -15,11 +16,9 @@ def intToRoman(num):
     }
     output = ""
     for key in numerals.keys():
-        while key <= num:
-            output += numerals[key]
-            num -= key
-            
-
+      while key <= num:
+         output += numerals[key]
+         num -= key
     return output
 
-print(intToRoman(9999))
+print(intToRoman(3999))

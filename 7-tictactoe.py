@@ -1,13 +1,13 @@
-import random
+import random,os
 
+#დაფა, სიის სახით
 board = [
-    """სათამაშო დაფა, სიის სახით"""
     ' ',' ',' ',
     ' ',' ',' ',
     ' ',' ',' ',
     ]
 winning_combinations = [
-    """მომგები კომბინაციები"""
+    #მომგები კომბინაციები
     #რიგები
     [0,1,2],
     [3,4,5],
@@ -28,6 +28,13 @@ def check_win(player):
         if all(board[i] == player for i in combination):
             return True
     return False
+def reset_board():
+    global board 
+    board = [
+    ' ',' ',' ',
+    ' ',' ',' ',
+    ' ',' ',' ',
+    ]
 
 def print_board():
     """ფუნქცია, რომელიც ბეჭდავს დაფას"""
@@ -65,6 +72,8 @@ def play_game():
             game_over = True
         else:
             current_player = "O" if current_player == "X" else "X"
+        if game_over:
+          reset_board()
 
 def play_computer():
     """ფუნქცია, რომელიც წარმართავს თამაშს (მოთამაშე-კომპიუტერი)"""
@@ -87,8 +96,6 @@ def play_computer():
                 break
             move = random.choice(available_moves)
             index = move - 1
-
-
         if move not in range(1, 10):
             print("არასწორი სვლაა")
             continue
@@ -107,6 +114,26 @@ def play_computer():
             game_over = True
         else:
             current_player = "O" if current_player == "X" else "X"
+        if game_over:
+            reset_board()
 
 
-play_computer()
+def main():
+    while True:
+        print("მენიუ:")
+        print("1. თამაში, მოთამაშე მოთამაშის წინააღმდეგ")
+        print("2. თამაში კომპიუტერთან")
+        print("0. გასვლა")
+    
+        choice = int(input("აირჩიეთ მოქმედება(0-2):"))
+        if choice == 1:
+            play_game()
+        elif choice == 2:
+            play_computer()
+        elif choice == 0:
+            break
+        input("ხელახლა სათამაშოდ, დააჭირე Enter-ს...")
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+if __name__ == "__main__":
+    main()
