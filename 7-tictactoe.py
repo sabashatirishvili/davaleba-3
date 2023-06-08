@@ -29,6 +29,7 @@ def check_win(player):
             return True
     return False
 def reset_board():
+    """ფუნქცია, რომელიც უბრუნებს დაფას საწყის მდგომარეობას"""
     global board 
     board = [
     ' ',' ',' ',
